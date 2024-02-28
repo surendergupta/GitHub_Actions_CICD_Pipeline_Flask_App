@@ -47,7 +47,7 @@ jobs:
       - name: Build application
         run: | 
           pip install pytest Flask
-          python app.py          
+          nohup python app.py > output.log &         
 
   deploy-to-staging:
     runs-on: ubuntu-latest
@@ -56,12 +56,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        
       - name: Deploy to staging
-        run: python app.py
+        run: nohup python app.py > output.log &
      
-      - name: checking out code on runner
-        uses: actions/checkout@v4
-
       - name: login and update EC2 instance
         uses: appleboy/ssh-action@v1.0.3
         with: 
@@ -82,4 +80,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Deploy to production
-        run: python app.py
+        run: nohup python app.py > output.log &
+
+      - name: login and update EC2 instance
+        uses: appleboy/ssh-action@v1.0.3
+        with: 
+            host: ${{ secrets.EC2_HOST }}
+            username: ${{ secrets.EC2_USERNAME }}
+            key: ${{ secrets.EC2_SSH_KEY }}
+            port: 22
+            script: |
+              whoami
+              ls
+              pwd
