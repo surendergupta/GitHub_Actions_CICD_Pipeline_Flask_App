@@ -47,6 +47,17 @@ jobs:
         uses: actions/checkout@v2
       - name: Deploy to staging
         run: python app.py
+      - name: checking out code on runner
+        uses: actions/checkout@v4
+
+      - name: login and update EC2 instance
+        uses: appleboy/ssh-action@v1.0.3
+        with: 
+            host: ${{ secrets.EC2_HOST }}
+            username: ${{ secrets.EC2_USERNAME }}
+            key: ${{ secrets.EC2_SSH_KEY }}
+            port: 22
+            script: |
         
 
   deploy-to-production:
