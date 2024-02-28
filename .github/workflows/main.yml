@@ -9,7 +9,7 @@ on:
     types: [published]
 
 jobs:
-  install-dependencies:
+  installdependencies:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
