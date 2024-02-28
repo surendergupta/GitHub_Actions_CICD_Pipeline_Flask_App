@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -18,7 +18,7 @@ jobs:
     needs: install-dependencies
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Run tests
         run: pytest test.py
 
@@ -38,9 +38,10 @@ jobs:
     if: github.ref == 'refs/heads/staging'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Deploy to staging
         run: python app.py
+     
       - name: checking out code on runner
         uses: actions/checkout@v4
 
@@ -62,6 +63,6 @@ jobs:
     if: github.event_name == 'release' && github.event.action == 'published'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Deploy to production
         run: python app.py
