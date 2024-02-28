@@ -21,7 +21,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Run tests
-        run: pytest test.py
+        run: pytest
 
   build:
     runs-on: ubuntu-latest
