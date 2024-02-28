@@ -58,7 +58,9 @@ jobs:
             key: ${{ secrets.EC2_SSH_KEY }}
             port: 22
             script: |
-        
+              whoami
+              ls
+              pwd
 
   deploy-to-production:
     runs-on: ubuntu-latest
