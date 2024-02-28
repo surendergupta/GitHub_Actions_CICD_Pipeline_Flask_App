@@ -9,24 +9,24 @@ on:
     types: [published]
 
 jobs:
-    install-dependencies:
-        runs-on: ubuntu-latest
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v4
+  install-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
             
-          - name: login and update EC2 instance
-            uses: appleboy/ssh-action@v1.0.3
-            with: 
-                host: ${{ secrets.EC2_HOST }}
-                username: ${{ secrets.EC2_USERNAME }}
-                key: ${{ secrets.EC2_SSH_KEY }}
-                port: 22
-                script: |
-                  whoami
-                  pwd
-                  sudo apt-get update -y
-                  sudo apt install python3-pip
-                  git clone https://github.com/surendergupta/GitHub_Actions_CICD_Pipeline_Flask_App.git
-                  cd GitHub_Actions_CICD_Pipeline_Flask_App/
-                  pip3 install -r requirements.txt
+      - name: login and update EC2 instance
+        uses: appleboy/ssh-action@v1.0.3
+        with: 
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: |
+            whoami
+            pwd
+            sudo apt-get update -y
+            sudo apt install python3-pip
+            git clone https://github.com/surendergupta/GitHub_Actions_CICD_Pipeline_Flask_App.git
+            cd GitHub_Actions_CICD_Pipeline_Flask_App/
+            pip3 install -r requirements.txt
