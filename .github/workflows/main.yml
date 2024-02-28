@@ -5,6 +5,8 @@ on:
     branches:
       - staging
       - main
+  release:
+    types: [published]
 
 jobs:
   install-dependencies:
