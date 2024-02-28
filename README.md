@@ -36,5 +36,15 @@ You can access the status and logs of the CI/CD workflow on the GitHub Actions t
 
 This workflow requires the following secrets to be set up in the GitHub repository settings:
 
-- `SECRET_KEY`: Secret key for the application.
-- `DATABASE_URL`: URL of the database server.
+- `EC2_HOST`: HOST IP for the AWS Virtual Machine.
+- `EC2_SSH_KEY`: SSH KEY for the AWS Virtual Machine.
+- `EC2_USERNAME`: Username for the AWS Virtual Machine.
+
+## SCREENSHOT Staging Branch Update 
+![image](https://github.com/surendergupta/GitHub_Actions_CICD_Pipeline_Flask_App/assets/20636844/6da45a24-1599-4054-9c5a-d87c5df9d980)
+
+## SCREENSHOT Release Event published Update
+![Screenshot 2024-02-28 193714](https://github.com/surendergupta/GitHub_Actions_CICD_Pipeline_Flask_App/assets/20636844/a562c2a9-7435-4ef6-93ac-81a2106c21ac)
+
+
+
