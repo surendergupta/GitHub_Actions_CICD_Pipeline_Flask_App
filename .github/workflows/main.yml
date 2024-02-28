@@ -1,6 +1,10 @@
 name: Python Application CI/CD
 
-on: [push]
+on:
+  push:
+    branches:
+      - staging
+      - main
 
 jobs:
   install-dependencies:
