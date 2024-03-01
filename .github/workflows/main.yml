@@ -9,6 +9,7 @@ on:
 
 jobs:
   install-dependencies:
+    name: Install Dependencies
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
