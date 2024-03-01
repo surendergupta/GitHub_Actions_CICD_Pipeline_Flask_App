@@ -119,6 +119,7 @@ jobs:
             pip install -r requirements.txt
             sudo kill -9 $(sudo lsof -t -i:3000)
             python3 app.py
+          timeout-minutes: 5
             
   deploy-to-production:
     runs-on: ubuntu-latest
