@@ -52,7 +52,7 @@ jobs:
           python-version: '3.10' 
       - name: Build application
         run: | 
-          pip install pytest Flask
+          pip install Flask
           nohup python app.py > output.log &         
 
   deploy-to-staging:
@@ -64,7 +64,9 @@ jobs:
         uses: actions/checkout@v3
         
       - name: Deploy to staging
-        run: nohup python app.py > output.log &
+        run: |
+          pip install Flask
+          nohup python app.py > output.log &
      
       - name: login and update EC2 instance
         uses: appleboy/ssh-action@v1.0.3
@@ -86,7 +88,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Deploy to production
-        run: nohup python app.py > output.log &
+        run: |
+          pip install Flask
+          nohup python app.py > output.log &
 
       - name: login and update EC2 instance
         uses: appleboy/ssh-action@v1.0.3
