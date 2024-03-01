@@ -87,7 +87,12 @@ jobs:
           port: ${{ secrets.EC2_PORT }}
           script: |
             sudo apt-get update -y
-            mkdir FlaskApp
+            if [ -d "FlaskApp" ]; then
+              echo "Directory 'FlaskApp' already exists."
+            else
+              echo "Directory 'FlaskApp' does not exist, creating it."
+              mkdir FlaskApp
+            fi
                 
       - name: copy file via git repo
         uses: appleboy/scp-action@v0.1.7
@@ -131,7 +136,12 @@ jobs:
             port: ${{ secrets.EC2_PORT }}
             script: |                
                 sudo apt-get update -y                
-                mkdir FlaskApp
+                if [ -d "FlaskApp" ]; then
+                  echo "Directory 'FlaskApp' already exists."
+                else
+                  echo "Directory 'FlaskApp' does not exist, creating it."
+                  mkdir FlaskApp
+                fi
                 
       - name: copy file via git repo
         uses: appleboy/scp-action@v0.1.7
