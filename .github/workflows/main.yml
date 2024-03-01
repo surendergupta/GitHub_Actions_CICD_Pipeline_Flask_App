@@ -118,8 +118,7 @@ jobs:
             cd /home/ubuntu/FlaskApp/
             pip install -r requirements.txt
             sudo kill -9 $(sudo lsof -t -i:3000)
-            python3 app.py
-          timeout-minutes: 5
+            nohup python3 app.py > output.log &
             
   deploy-to-production:
     runs-on: ubuntu-latest
@@ -167,5 +166,6 @@ jobs:
             python3 -m pip install --upgrade pip          
             cd /home/ubuntu/FlaskApp/
             pip install -r requirements.txt
-            sudo kill -9 $(sudo lsof -t -i:3000)
-            python3 app.py
+            pip install gunicorn
+            sudo kill -9 $(sudo lsof -t -i:5000)
+            gunicorn -w 4 -b 0.0.0.0:5000 app:app
